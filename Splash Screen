@@ -1,0 +1,128 @@
+Criando um desenho para a tela inicial:
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <color android:color="@color/splash_background"/>
+  </item>
+  <item>
+    <bitmap
+        android:src="@drawable/splash_logo"
+        android:tileMode="disabled"
+        android:gravity="center"/>
+  </item>
+</layer-list>
+
+
+Implementando um tema:
+
+<resources>
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
+  </style>
+
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+
+  <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>  
+    <item name="android:windowFullscreen">true</item>  
+    <item name="android:windowContentOverlay">@null</item>  
+    <item name="android:windowActionBar">true</item>  
+  </style>
+</resources>
+
+
+Criar uma atividade splash:
+
+[Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+public class SplashActivity : AppCompatActivity
+{
+    static readonly string TAG = "X:" + typeof(SplashActivity).Name;
+
+    public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+    {
+        base.OnCreate(savedInstanceState, persistentState);
+        Log.Debug(TAG, "SplashActivity.OnCreate");
+    }
+
+    // Launches the startup task
+    protected override void OnResume()
+    {
+        base.OnResume();
+        Task startupWork = new Task(() => { SimulateStartup(); });
+        startupWork.Start();
+    }
+
+    // Simulates background work that happens behind the splash screen
+    async void SimulateStartup ()
+    {
+        Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
+        await Task.Delay (8000); // Simulate a bit of startup work.
+        Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
+        StartActivity(new Intent(Application.Context, typeof (MainActivity)));
+    }
+}
+Criando um desenho para a tela inicial:
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <color android:color="@color/splash_background"/>
+  </item>
+  <item>
+    <bitmap
+        android:src="@drawable/splash_logo"
+        android:tileMode="disabled"
+        android:gravity="center"/>
+  </item>
+</layer-list>
+
+
+Implementando um tema:
+
+<resources>
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
+  </style>
+
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+
+  <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>  
+    <item name="android:windowFullscreen">true</item>  
+    <item name="android:windowContentOverlay">@null</item>  
+    <item name="android:windowActionBar">true</item>  
+  </style>
+</resources>
+
+
+Criar uma atividade splash:
+
+[Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+public class SplashActivity : AppCompatActivity
+{
+    static readonly string TAG = "X:" + typeof(SplashActivity).Name;
+
+    public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+    {
+        base.OnCreate(savedInstanceState, persistentState);
+        Log.Debug(TAG, "SplashActivity.OnCreate");
+    }
+
+    // Launches the startup task
+    protected override void OnResume()
+    {
+        base.OnResume();
+        Task startupWork = new Task(() => { SimulateStartup(); });
+        startupWork.Start();
+    }
+
+    // Simulates background work that happens behind the splash screen
+    async void SimulateStartup ()
+    {
+        Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
+        await Task.Delay (8000); // Simulate a bit of startup work.
+        Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
+        StartActivity(new Intent(Application.Context, typeof (MainActivity)));
+    }
+}
