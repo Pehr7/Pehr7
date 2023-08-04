@@ -1,4 +1,4 @@
-Criando um desenho para a tela inicial:
+\\ Criando um desenho para a tela inicial
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
@@ -13,7 +13,7 @@ Criando um desenho para a tela inicial:
 </layer-list>
 
 
-Implementando um tema:
+\\ Implementando um tema
 
 <resources>
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
@@ -32,7 +32,7 @@ Implementando um tema:
 </resources>
 
 
-Criar uma atividade splash:
+\\ Criar uma atividade splash
 
 [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
 public class SplashActivity : AppCompatActivity
@@ -54,6 +54,7 @@ public class SplashActivity : AppCompatActivity
     }
 
     // Simulates background work that happens behind the splash screen
+
     async void SimulateStartup ()
     {
         Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
@@ -64,7 +65,7 @@ public class SplashActivity : AppCompatActivity
 }
 
 
-Criando um desenho para a tela inicial:
+\\ Criando um desenho para a tela inicial
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
@@ -79,7 +80,7 @@ Criando um desenho para a tela inicial:
 </layer-list>
 
 
-Implementando um tema:
+\\ Implementando um tema
 
 <resources>
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
@@ -98,7 +99,7 @@ Implementando um tema:
 </resources>
 
 
-Criar uma atividade splash:
+\\ Criar uma atividade splash
 
 [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
 public class SplashActivity : AppCompatActivity
@@ -111,7 +112,8 @@ public class SplashActivity : AppCompatActivity
         Log.Debug(TAG, "SplashActivity.OnCreate");
     }
 
-    // Launches the startup task
+  // Launches the startup task
+
     protected override void OnResume()
     {
         base.OnResume();
@@ -119,7 +121,8 @@ public class SplashActivity : AppCompatActivity
         startupWork.Start();
     }
 
-    // Simulates background work that happens behind the splash screen
+  // Simulates background work that happens behind the splash screen
+
     async void SimulateStartup ()
     {
         Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
